@@ -8,6 +8,12 @@
   "dependencies": {
     "express": "~4.16.1",
     "ipfs-core": "^0.14.3",
+    "libp2p-kad-dht": "^0.28.6",
+    "libp2p-mdns": "^0.18.0",
+    "libp2p-tcp": "^0.17.2",
+    "libp2p-webrtc-direct": "^0.7.1",
+    "libp2p-webrtc-star": "^0.25.0",
+    "libp2p-websockets": "^0.16.2",
     "orbit-db": "^0.28.6",
     "wrtc": "^0.4.7"
   }

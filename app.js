@@ -2,6 +2,12 @@ const express = require('express');
 const IPFSLIB = require('ipfs-core')
 const OrbitDB = require('orbit-db');
 const wrtc = require('wrtc');
+const WebRTCStar = require('libp2p-webrtc-star');
+const WebSockets = require('libp2p-websockets');
+const WebRTCDirect = require('libp2p-webrtc-direct');
+const KadDHT = require('libp2p-kad-dht');
+const MulticastDNS = require('libp2p-mdns');
+const TCP = require('libp2p-tcp');
 
 const app = express();
 app.use(express.json());
@@ -19,7 +25,11 @@ const ipfsConfig = {
   },
   relay: { enabled: true, hop: { enabled: true, active: true } },
   libp2p: {
-    modules: {},
+    modules: {
+      transport: [WebRTCStar, WebSockets, WebRTCDirect, TCP],
+      peerDiscovery: [MulticastDNS],
+      dht: KadDHT,
+    },
     config: {
       peerDiscovery: {
         webRTCStar: {
