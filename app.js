@@ -8,22 +8,23 @@ const WebRTCDirect = require('libp2p-webrtc-direct');
 const KadDHT = require('libp2p-kad-dht');
 const MulticastDNS = require('libp2p-mdns');
 const TCP = require('libp2p-tcp');
+const morgan = require('morgan');
 
 const app = express();
 app.use(express.json());
+app.use(morgan('dev'));
 
 const port = process.env.PORT || 3000;
 
 const ipfsConfig = {
   start: true,
-  repo: './orbit-db-ipfs',
+  repo: './orbitdb-ipfs',
   EXPERIMENTAL: {
     pubsub: true,
   },
   preload: {
     enabled: false,
   },
-  relay: { enabled: true, hop: { enabled: true, active: true } },
   libp2p: {
     modules: {
       transport: [WebRTCStar, WebSockets, WebRTCDirect, TCP],
@@ -79,8 +80,8 @@ app.post('/', async (req, res) => {
     console.log('Connecting to', address);
     // TODO: Add once connection is established
     // const multiHash = await PROGRAMS.add({address, type});
-    console.log('Added', address, 'to programs');
-    const connection = ORBITDB.open(address, {type})
+    // console.log('Added', address, 'to programs');
+    const connection = await ORBITDB.open(address, {type})
     DBCONNECTIONS.set(address, {connection, type});
     res.status(201).send();
   }catch(e){
