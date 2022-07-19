@@ -30,6 +30,11 @@ app.post('/', async (req, res) => {
 
 	const { address, type } = req.body
 
+	if (DBCONNECTIONS.has(address)) {
+		res.status(200).send('Already connected')
+		return
+	}
+
 	try {
 		console.log('Connecting to', address)
 
@@ -66,13 +71,12 @@ app.delete('/', async (req, res) => {
 			console.log('Dropped connection to', address)
 			await PROGRAMS.remove(multiHash)
 			console.log('Removed', address, 'from programs')
+			DBCONNECTIONS.delete(address)
 		}
 		res.status(200).send()
 	} catch (e) {
 		res.status(500).send(e)
 	}
-
-	console.log('Closing delete function.')
 })
 
 const server = app.listen(port, async () => {
