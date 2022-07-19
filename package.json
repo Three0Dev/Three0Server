@@ -2,6 +2,7 @@
   "name": "three0server",
   "version": "0.0.1",
   "private": true,
+  "description": "Three0 Server that emulates peer in OrbitDB",
   "scripts": {
     "start": "node app.js",
     "lint": "eslint --ext .js,.jsx src",
