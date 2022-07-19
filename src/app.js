@@ -10,7 +10,7 @@ app.use(express.json())
 app.use(morgan('dev'))
 app.use(cors())
 
-const port = process.env.PORT || 3000
+const port = process.env.PORT || 8080
 
 let ORBITDB
 let PROGRAMS
