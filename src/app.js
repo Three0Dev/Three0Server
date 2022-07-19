@@ -2,11 +2,13 @@ const express = require('express')
 const IPFSLIB = require('ipfs-core')
 const OrbitDB = require('orbit-db')
 const morgan = require('morgan')
+const cors = require('cors')
 const ipfsConfig = require('./ipfsconfig')
 
 const app = express()
 app.use(express.json())
 app.use(morgan('dev'))
+app.use(cors())
 
 const port = process.env.PORT || 3000
 

@@ -9,6 +9,7 @@
     "lint:fix": "eslint --ext .js,.jsx src --fix"
   },
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "~4.16.1",
     "ipfs-core": "^0.14.3",
     "libp2p-kad-dht": "^0.28.6",
