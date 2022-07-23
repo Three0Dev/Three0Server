@@ -5,6 +5,7 @@
   "description": "Three0 Server that emulates peer in OrbitDB",
   "scripts": {
     "start": "node src/app.js",
+    "dev": "node --trace-warnings src/app.js",
     "lint": "eslint --ext .js,.jsx src",
     "lint:fix": "eslint --ext .js,.jsx src --fix"
   },
